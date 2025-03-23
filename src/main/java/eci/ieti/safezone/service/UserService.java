@@ -46,4 +46,25 @@ public class UserService {
 
         return users;
     }
+    public User validateUser(String username, String password) {
+        return findAll().stream()
+                .filter(user -> user.getName().equals(username) && user.getPassword().equals(password))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public List<User> findByName(String name) {
+        List<User> users = new ArrayList<>();
+
+        userTable.scan(ScanEnhancedRequest.builder().build())
+                .items()
+                .forEach(user -> {
+                    if (user.getName().equalsIgnoreCase(name)) {
+                        users.add(user);
+                    }
+                });
+
+        return users;
+    }
+
 }
