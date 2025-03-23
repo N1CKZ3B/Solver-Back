@@ -15,6 +15,7 @@ public class User {
     private DocumentType documentType;
     private String documentNumber;
     private String profile;
+    private Role role;
 
     // Constructor vacío (necesario para DynamoDB)
     public User() {}
@@ -63,5 +64,13 @@ public class User {
 
     public void setProfile(String profile) {
         this.profile = profile;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
