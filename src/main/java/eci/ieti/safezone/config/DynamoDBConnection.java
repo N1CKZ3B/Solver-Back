@@ -17,7 +17,7 @@ public class DynamoDBConnection {
                             System.getenv("AWS_ACCESS_KEY_ID"),
                             System.getenv("AWS_SECRET_ACCESS_KEY")
                         )
-                .build();
+                .build()));
 
         // Crear cliente mejorado para manejar tablas
         DynamoDbEnhancedClient enhancedClient = DynamoDbEnhancedClient.builder()
