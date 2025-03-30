@@ -25,7 +25,7 @@
                     "name": "AWS_SECRET_ACCESS_KEY",
                     "valueFrom": "arn:aws:secretsmanager:us-east-2:891612557107:secret:AWS_SECRET_ACCESS_KEY-oZgZEO"
                 }
-            ]
+            ],
             "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
