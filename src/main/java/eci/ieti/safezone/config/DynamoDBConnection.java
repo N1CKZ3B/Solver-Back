@@ -13,7 +13,10 @@ public class DynamoDBConnection {
         DynamoDbClient dynamoDbClient = DynamoDbClient.builder()
                 .region(Region.US_EAST_2) // Cambia esto según tu región
                 .credentialsProvider(StaticCredentialsProvider.create(
-                        AwsBasicCredentials.create(${AWS_ACCESS_KEY_ID}, ${AWS_SECRET_ACCESS_KEY})))
+                        AwsBasicCredentials.create(
+                            System.getenv("AWS_ACCESS_KEY_ID"),
+                            System.getenv("AWS_SECRET_ACCESS_KEY")
+                        )
                 .build();
 
         // Crear cliente mejorado para manejar tablas
