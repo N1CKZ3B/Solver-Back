@@ -4,21 +4,21 @@
       {
         "name": "BackSolver",
         "image": "891612557107.dkr.ecr.us-east-2.amazonaws.com/solver-repository:latest",
-        "cpu": 256,  // CPU reservada para el contenedor (no 0)
-        "memory": 512,  // Memoria reservada para el contenedor
+        "cpu": 256,
+        "memory": 512,
         "portMappings": [
           {
             "containerPort": 8080,
-            "hostPort": 8080,  // EC2 asignará un puerto automáticamente
+            "hostPort": 8080,
             "protocol": "tcp"
           }
         ],
         "essential": true
       }
     ],
-    "networkMode": "awsvpc",  // Modo correcto para EC2
+    "networkMode": "awsvpc",
     "requiresCompatibilities": ["EC2"],
-    "cpu": "512",  // Máximo permitido en t2.micro (1 vCPU = 1024)
-    "memory": "900",  // Máximo recomendado para t2.micro (1GB RAM)
+    "cpu": "512", 
+    "memory": "900",
     "executionRoleArn": "arn:aws:iam::891612557107:role/ecsTaskExecutionRole"
   }
