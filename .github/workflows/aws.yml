@@ -63,6 +63,10 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
+    - name: Verificar presencia de Dockerfile
+      run: ls -l
+
+
 
     - name: Build, tag, and push image to Amazon ECR
       id: build-image
@@ -73,7 +77,7 @@ jobs:
         # Build a docker container and
         # push it to ECR so that it can
         # be deployed to ECS.
-        docker build -t $ECR_REPOSITORY:latest ./Dockerfile
+        docker build -t $ECR_REPOSITORY:latest .
         docker tag $ECR_REPOSITORY:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPOSITORY:latest
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
         echo "image=$ECR_REGISTRY/$ECR_REPOSITORY:latest >> $GITHUB_OUTPUT
