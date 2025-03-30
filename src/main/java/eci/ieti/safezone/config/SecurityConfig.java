@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable()) // Deshabilitar CSRF
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sesión sin estado
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/signup", "/auth/login").permitAll() // Rutas públicas
+                        .requestMatchers("/auth/signup", "/auth/login", "/status").permitAll() // Rutas públicas
                         .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN") // Solo ADMIN accede a /admin/**
                         .requestMatchers("/**").hasAuthority("ROLE_USER") // Permitir acceso a rutas de usuario
                         .anyRequest().authenticated() // Todas las demás requieren autenticación
