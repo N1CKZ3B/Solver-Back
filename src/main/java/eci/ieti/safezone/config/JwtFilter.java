@@ -33,7 +33,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String requestPath = request.getServletPath();
 
         // Permitir rutas públicas sin verificar el token
-        if (requestPath.equals("/auth/signup") || requestPath.equals("/auth/login")) {
+        if (requestPath.equals("/auth/signup") || requestPath.equals("/auth/login") || requestPath.equals("/status")) {
             chain.doFilter(request, response);
             return;
         }
