@@ -1,24 +1,73 @@
 {
-    "family": "SolverBack",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:891612557107:task-definition/SolverBack:1",
     "containerDefinitions": [
-      {
-        "name": "BackSolver",
-        "image": "891612557107.dkr.ecr.us-east-2.amazonaws.com/solver-repository:latest",
-        "cpu": 256,
-        "memory": 512,
-        "portMappings": [
-          {
-            "containerPort": 8080,
-            "hostPort": 8080,
-            "protocol": "tcp"
-          }
-        ],
-        "essential": true
-      }
+        {
+            "name": "BackSolver",
+            "image": "891612557107.dkr.ecr.us-east-2.amazonaws.com/solver-repository:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "backsolver-8080-tcp",
+                    "containerPort": 8080,
+                    "hostPort": 8080,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "secrets": [
+                {
+                    "name": "AWS_ACCESS_KEY_ID",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:891612557107:secret:AWS_ACCESS_KEY_ID-0MKlYb"
+                },
+                {
+                    "name": "AWS_SECRET_ACCESS_KEY",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:891612557107:secret:AWS_SECRET_ACCESS_KEY-oZgZEO"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "systemControls": []
+        }
     ],
+    "family": "SolverBack",
+    "executionRoleArn": "arn:aws:iam::891612557107:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "requiresCompatibilities": ["EC2"],
-    "cpu": "512", 
-    "memory": "900",
-    "executionRoleArn": "arn:aws:iam::891612557107:role/ecsTaskExecutionRole"
-  }
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2025-03-30T01:45:29.101Z",
+    "registeredBy": "arn:aws:iam::891612557107:root",
+    "enableFaultInjection": false,
+    "tags": []
+}
