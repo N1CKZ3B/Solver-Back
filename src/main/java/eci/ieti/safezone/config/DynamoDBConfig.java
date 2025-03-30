@@ -15,7 +15,10 @@ public class DynamoDBConfig {
         return DynamoDbClient.builder()
                 .region(Region.US_EAST_2) // Cambia la región si es necesario
                 .credentialsProvider(StaticCredentialsProvider.create(
-                        AwsBasicCredentials.create(${AWS_ACCESS_KEY_ID}, ${AWS_SECRET_ACCESS_KEY})
+                        AwsBasicCredentials.create(
+                            System.getenv("AWS_ACCESS_KEY_ID"),
+                            System.getenv("AWS_SECRET_ACCESS_KEY")
+                        )
                 ))
                 .build();
     }
