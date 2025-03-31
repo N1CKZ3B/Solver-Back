@@ -77,6 +77,7 @@ jobs:
         docker build -t solver-repository .
         docker tag solver-repository:latest 891612557107.dkr.ecr.us-east-2.amazonaws.com/solver-repository:latest
         docker push 891612557107.dkr.ecr.us-east-2.amazonaws.com/solver-repository:latest
+        echo "image=891612557107.dkr.ecr.us-east-2.amazonaws.com/solver-repository:latest" >> $GITHUB_OUTPUT
 
     - name: Download task definition
       run: |
