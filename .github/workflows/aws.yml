@@ -98,4 +98,4 @@ jobs:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ServiceSolver
         cluster: SolverBack-1
-        wait-for-service-stability: true
+        wait-for-service-stability: false
