@@ -97,5 +97,5 @@ jobs:
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: ServiceSolver1
-        cluster: ${{ secrets.ECS_CLUSTER }}
+        cluster: SolverBack-1
         wait-for-service-stability: true
