@@ -33,7 +33,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/signup", "/auth/login", "/status").permitAll() // Rutas públicas
                         .requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN") // Solo ADMIN accede a /admin/**
-                        .requestMatchers("/**").hasAuthority("ROLE_USER") // Permitir acceso a rutas de usuario
+                        .requestMatchers("/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN") // Permitir acceso a rutas de usuario
                         .anyRequest().authenticated() // Todas las demás requieren autenticación
                 )
                 .addFilterBefore(new JwtFilter(jwtService), UsernamePasswordAuthenticationFilter.class) // Agregar filtro JWT
