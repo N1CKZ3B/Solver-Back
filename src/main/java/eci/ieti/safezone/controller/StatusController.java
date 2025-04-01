@@ -8,6 +8,6 @@ public class StatusController {
 
     @GetMapping("/status")
     public String getStatus() {
-        return "The app is running and functional :) Tony Tony Chopper";
+        return "The app is running and functional :) Tony Tony Chopper, Nicolas HP";
     }
 }
