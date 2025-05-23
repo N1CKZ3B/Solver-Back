@@ -25,7 +25,7 @@ public class AuthController {
     public ResponseEntity<?> register(@RequestBody User user) {
         user.setRole(Role.USER);
         userService.save(user);
-        return ResponseEntity.ok("Usuario registrado exitosamente");
+        return ResponseEntity.status(201).body("Usuario registrado exitosamente");
     }
 
     @PostMapping("/login")
